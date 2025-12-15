@@ -10,6 +10,6 @@ public class ThirdDeclination extends Noun{
     private static final String[][] suffixes = new String[][]{}; //TODO: IMPLEMENT SUFFIXES IN RIGHT ORDER
 
     public ThirdDeclination(String stem, Genus genus) {
-        super(stem, genus, suffixes);
+        super(stem, genus, null); //TODO: REMOVE NULL
     }
 }

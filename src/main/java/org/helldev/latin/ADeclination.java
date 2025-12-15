@@ -5,11 +5,11 @@ package org.helldev.latin;
  */
 
 public class ADeclination extends Noun{
-    private static final String[][] suffixes = {
-            {"a", "ae", "ae", "am", "a", "a"},
-            {"ae", "arum", "is", "as", "ae", "is"}//TODO: CONTROL IF CASES ARE PLACED IN THE RIGHT ORDER, FUCKING IMPORTANT!!!
-    };
+//    private static final String[][] suffixes = {
+//            {"a", "ae", "ae", "am", "a", "a"},
+//            {"ae", "arum", "is", "as", "ae", "is"}//TODO: CONTROL IF CASES ARE PLACED IN THE RIGHT ORDER, FUCKING IMPORTANT!!!
+//    };
     public ADeclination(String stem) {
-        super(stem, Genus.FEMININUM, suffixes);
+        super(stem, Genus.FEMININUM,null); //TODO: REMOVE NULL
     }
 }

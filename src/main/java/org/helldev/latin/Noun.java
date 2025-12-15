@@ -1,18 +1,17 @@
 package org.helldev.latin;
 
+import java.util.Map;
+
 public class Noun {
 
     String stem; // This is the part of the word which mostly doesnt change, usually it gets extendend by an Suffix depending on the context.
     Genus genus; //Nouns have grammatical Genders which have certain effects on Declinations.
-    String[][] suffixes = new String[Numerus.values().length][Person.values().length]; //This is where the possible suffixes of the Word are saved
+    Map<CasusNumerus, String> suffixes; //This is where the possible suffixes of the Word are saved
 
-    public Noun(String stem, Genus genus, String[][] suffixes){
+    public Noun(String stem, Genus genus, Map<CasusNumerus, String> suffixes){
         this.stem = stem;
         this.genus = genus;
-        for (int i = 0; i < suffixes.length; i++) {
-            System.arraycopy(suffixes[i], 0, this.suffixes[i], 0, suffixes[i].length);
-
-        }
+        this.suffixes = suffixes;
     }
 
     public String getString(Casus casus, Numerus nummerus){
@@ -24,7 +23,7 @@ public class Noun {
         return stringBuilder.toString();
     }
 
-    public String getNominativeSingular() {
+   /* public String getNominativeSingular() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(stem);
         String suffix = "";
@@ -44,5 +43,5 @@ public class Noun {
         }
         stringBuilder.append(suffix);
         return stringBuilder.toString();
-    }
+    }*/
 }

@@ -7,6 +7,6 @@ package org.helldev.latin;
 public class UmDeclination extends Noun{
     private static final String[][] suffixes = new String[][]{}; //TODO: IMPLEMENT SUFFIXES IN RIGHT ORDER
     public UmDeclination(String stem) {
-        super(stem, Genus.NEUTRUM, suffixes);
+        super(stem, Genus.NEUTRUM, null ); //TODO: REMOVE NULL
     }
 }
