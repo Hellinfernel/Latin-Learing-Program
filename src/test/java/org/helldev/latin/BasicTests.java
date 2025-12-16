@@ -50,5 +50,22 @@ public class BasicTests {
         assertThat(porta.getString(Casus.ABLATIVE,Numerus.PLURAL)).isEqualTo("portis");
         assertThat(porta.getString(Casus.VOCATIVE,Numerus.PLURAL)).isEqualTo("portae");
     }
+    @Test
+    public void TestThirdDeclination(){
+        Noun senator = new ThirdDeclination("senator", Genus.MASCULINUM);
+        assertThat(senator.getString(Casus.NOMINATIVE,Numerus.SINGULAR)).isEqualTo("senator");
+        assertThat(senator.getString(Casus.GENITIVE,Numerus.SINGULAR)).isEqualTo("senatoris");
+        assertThat(senator.getString(Casus.DATIVE,Numerus.SINGULAR)).isEqualTo("senatori");
+        assertThat(senator.getString(Casus.ACCUSATIVE,Numerus.SINGULAR)).isEqualTo("senatorem");
+        assertThat(senator.getString(Casus.ABLATIVE,Numerus.SINGULAR)).isEqualTo("senatore");
+        assertThat(senator.getString(Casus.VOCATIVE,Numerus.SINGULAR)).isEqualTo("senator");
+        assertThat(senator.getString(Casus.NOMINATIVE,Numerus.PLURAL)).isEqualTo("senatores");
+        assertThat(senator.getString(Casus.GENITIVE,Numerus.PLURAL)).isEqualTo("senatorum");
+        assertThat(senator.getString(Casus.DATIVE,Numerus.PLURAL)).isEqualTo("senatoribus");
+        assertThat(senator.getString(Casus.ACCUSATIVE,Numerus.PLURAL)).isEqualTo("senatores");
+        assertThat(senator.getString(Casus.ABLATIVE,Numerus.PLURAL)).isEqualTo("senatoribus");
+        assertThat(senator.getString(Casus.VOCATIVE,Numerus.PLURAL)).isEqualTo("senatores");
+    
+    }
     
 }
