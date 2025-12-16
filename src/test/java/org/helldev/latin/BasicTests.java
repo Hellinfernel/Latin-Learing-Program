@@ -2,37 +2,37 @@ package org.helldev.latin;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BasicTests {
     @Test
     public void Test1(){
-//        Noun servus = new ThirdDeclination("serv", Genus.MASCULINUM);
-//        Noun servum = new ThirdDeclination("serv", Genus.NEUTRUM);
-//        Noun serva = new ThirdDeclination("serv", Genus.FEMININUM);
-//        String nominativeMasculinumExpected = "servus";
-//        assertEquals(nominativeMasculinumExpected,servus.getNominativeSingular());
-//        String nominativeNeutrumExpected = "servum";
-//        assertEquals(nominativeNeutrumExpected,servum.getNominativeSingular());
-//        String nominativeFemininumExpected = "serva";
-//        assertEquals(nominativeFemininumExpected,serva.getNominativeSingular());
-        /*
-        String genitiveExpected = "servi";
-        String dativeExpected = "servo";
-        String accusativeExpected = "servum";
-        String ablativeExpected = "servo";
-        String vocativeExpected = "serve";
-        assertEquals(genitiveExpected,servus.getGenitiveSingular());
-        assertEquals(dativeExpected,servus.getDativeSingular());
-        assertEquals(accusativeExpected,servus.getAccusativeSingular());
-        assertEquals(ablativeExpected,servus.getAblativeSingular());
-        assertEquals(vocativeExpected,servus.getVocativeSingular());
-        
-         */
-        
-        
         Noun servus = new UsDeclination("serv");
-        assertEquals("servus", servus.getString(Casus.NOMINATIVE, Numerus.SINGULAR));
+        Noun forum = new UmDeclination("for");
+        assertThat(servus.getString(Casus.NOMINATIVE, Numerus.SINGULAR)).isEqualTo("servus");
+        assertThat(servus.getString(Casus.GENITIVE, Numerus.SINGULAR)).isEqualTo("servi");
+        assertThat(servus.getString(Casus.DATIVE, Numerus.SINGULAR)).isEqualTo("servo");
+        assertThat(servus.getString(Casus.ACCUSATIVE, Numerus.SINGULAR)).isEqualTo("servum");
+        assertThat(servus.getString(Casus.ABLATIVE, Numerus.SINGULAR)).isEqualTo("servo");
+        assertThat(servus.getString(Casus.VOCATIVE, Numerus.SINGULAR)).isEqualTo("serve");
+        assertThat(servus.getString(Casus.NOMINATIVE, Numerus.PLURAL)).isEqualTo("servi");
+        assertThat(servus.getString(Casus.GENITIVE, Numerus.PLURAL)).isEqualTo("servorum");
+        assertThat(servus.getString(Casus.DATIVE, Numerus.PLURAL)).isEqualTo("servis");
+        assertThat(servus.getString(Casus.ACCUSATIVE, Numerus.PLURAL)).isEqualTo("servos");
+        assertThat(servus.getString(Casus.ABLATIVE, Numerus.PLURAL)).isEqualTo("servis");
+        assertThat(servus.getString(Casus.VOCATIVE, Numerus.PLURAL)).isEqualTo("servi");
+        assertThat(forum.getString(Casus.NOMINATIVE, Numerus.SINGULAR)).isEqualTo("forum");
+        assertThat(forum.getString(Casus.GENITIVE, Numerus.SINGULAR)).isEqualTo("fori");
+        assertThat(forum.getString(Casus.DATIVE, Numerus.SINGULAR)).isEqualTo("foro");
+        assertThat(forum.getString(Casus.ACCUSATIVE, Numerus.SINGULAR)).isEqualTo("forum");
+        assertThat(forum.getString(Casus.ABLATIVE, Numerus.SINGULAR)).isEqualTo("foro");
+        assertThat(forum.getString(Casus.NOMINATIVE, Numerus.SINGULAR)).isEqualTo("forum");
+        assertThat(forum.getString(Casus.NOMINATIVE, Numerus.PLURAL)).isEqualTo("fora");
+        assertThat(forum.getString(Casus.GENITIVE, Numerus.PLURAL)).isEqualTo("fororum");
+        assertThat(forum.getString(Casus.DATIVE, Numerus.PLURAL)).isEqualTo("foris");
+        assertThat(forum.getString(Casus.ACCUSATIVE, Numerus.PLURAL)).isEqualTo("fora");
+        assertThat(forum.getString(Casus.ABLATIVE, Numerus.PLURAL)).isEqualTo("foris");
+        assertThat(forum.getString(Casus.NOMINATIVE, Numerus.PLURAL)).isEqualTo("fora");
     }
     
 }

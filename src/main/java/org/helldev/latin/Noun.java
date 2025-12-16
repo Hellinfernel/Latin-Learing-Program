@@ -17,6 +17,7 @@ public class Noun {
     public String getString(Casus casus, Numerus nummerus){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(stem);
+        stringBuilder.append(suffixes.getOrDefault(new CasusNumerus(casus,nummerus), ""));
         // int numerusNumber = Numerus.values().findEquivalent(numerus).returnSpot()
         // int casusNumber = Casus.values().findEquivalent(casus).returnSpot()
         // stringBuilder.append(suffixes[numerusNumber][genusNumber]
