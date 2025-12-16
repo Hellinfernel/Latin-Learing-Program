@@ -34,5 +34,21 @@ public class BasicTests {
         assertThat(forum.getString(Casus.ABLATIVE, Numerus.PLURAL)).isEqualTo("foris");
         assertThat(forum.getString(Casus.NOMINATIVE, Numerus.PLURAL)).isEqualTo("fora");
     }
+    @Test
+    public void TestADeclination(){
+        Noun porta = new ADeclination("port");
+        assertThat(porta.getString(Casus.NOMINATIVE,Numerus.SINGULAR)).isEqualTo("porta");
+        assertThat(porta.getString(Casus.GENITIVE,Numerus.SINGULAR)).isEqualTo("portae");
+        assertThat(porta.getString(Casus.DATIVE,Numerus.SINGULAR)).isEqualTo("portae");
+        assertThat(porta.getString(Casus.ACCUSATIVE,Numerus.SINGULAR)).isEqualTo("portam");
+        assertThat(porta.getString(Casus.ABLATIVE,Numerus.SINGULAR)).isEqualTo("porta");
+        assertThat(porta.getString(Casus.VOCATIVE,Numerus.SINGULAR)).isEqualTo("porta");
+        assertThat(porta.getString(Casus.NOMINATIVE,Numerus.PLURAL)).isEqualTo("portae");
+        assertThat(porta.getString(Casus.GENITIVE,Numerus.PLURAL)).isEqualTo("portarum");
+        assertThat(porta.getString(Casus.DATIVE,Numerus.PLURAL)).isEqualTo("portis");
+        assertThat(porta.getString(Casus.ACCUSATIVE,Numerus.PLURAL)).isEqualTo("portas");
+        assertThat(porta.getString(Casus.ABLATIVE,Numerus.PLURAL)).isEqualTo("portis");
+        assertThat(porta.getString(Casus.VOCATIVE,Numerus.PLURAL)).isEqualTo("portae");
+    }
     
 }
