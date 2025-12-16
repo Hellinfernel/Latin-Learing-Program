@@ -10,12 +10,10 @@ import java.util.Map;
  */
 
 public class ADeclination extends Noun{
-//    private static final String[][] suffixes = {
-//            {"a", "ae", "ae", "am", "a", "a"},
-//            {"ae", "arum", "is", "as", "ae", "is"}//TODO: CONTROL IF CASES ARE PLACED IN THE RIGHT ORDER, FUCKING IMPORTANT!!!
-//    };
+
+
     public ADeclination(String stem) {
-        super(stem, Genus.FEMININUM,createBaseMap()); //TODO: REMOVE NULL
+        super(stem, Genus.FEMININUM,createBaseMap());
     }
     private static @NotNull Map<CasusNumerus, String> createBaseMap(){
         Map<CasusNumerus, String> suffixes = new HashMap<CasusNumerus, String>();
