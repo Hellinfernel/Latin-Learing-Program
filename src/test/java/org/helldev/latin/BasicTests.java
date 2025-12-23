@@ -67,5 +67,75 @@ public class BasicTests {
         assertThat(senator.getString(Casus.VOCATIVE,Numerus.PLURAL)).isEqualTo("senatores");
     
     }
+    @Test
+    public void TestFirstConjugation(){
+        Verb amare = new FirstConjugation("am");
+        assertThat(amare.getVerbStringBuilder().build()).isEqualTo("amare");
+        assertThat(amare.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.SINGULAR).person(Person.FIRST).build()).isEqualTo("amo");
+        assertThat(amare.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.SINGULAR).person(Person.SECOND).build()).isEqualTo("amas");
+        assertThat(amare.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.SINGULAR).person(Person.THIRD).build()).isEqualTo("amat");
+        assertThat(amare.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.PLURAL).person(Person.FIRST).build()).isEqualTo("amamus");
+        assertThat(amare.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.PLURAL).person(Person.SECOND).build()).isEqualTo("amatis");
+        assertThat(amare.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.PLURAL).person(Person.THIRD).build()).isEqualTo("amant");
+        assertThat(amare.getVerbStringBuilder().indicative().singular().first().build()).isEqualTo("amo");
+        assertThat(amare.getVerbStringBuilder().indicative().singular().second().build()).isEqualTo("amas");
+        assertThat(amare.getVerbStringBuilder().indicative().singular().third().build()).isEqualTo("amat");
+        assertThat(amare.getVerbStringBuilder().indicative().plural().first().build()).isEqualTo("amamus");
+        assertThat(amare.getVerbStringBuilder().indicative().plural().second().build()).isEqualTo("amatis");
+        assertThat(amare.getVerbStringBuilder().indicative().plural().third().build()).isEqualTo("amant");
+        
+    }
+    @Test
+    public void TestSecondConjugation(){
+        Verb gaudere = new SecondConjugation("gaud");
+        assertThat(gaudere.getVerbStringBuilder().build()).isEqualTo("gaudere");
+        assertThat(gaudere.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.SINGULAR).person(Person.FIRST).build()).isEqualTo("gaudeo");
+        assertThat(gaudere.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.SINGULAR).person(Person.SECOND).build()).isEqualTo("gaudes");
+        assertThat(gaudere.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.SINGULAR).person(Person.THIRD).build()).isEqualTo("gaudet");
+        assertThat(gaudere.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.PLURAL).person(Person.FIRST).build()).isEqualTo("gaudemus");
+        assertThat(gaudere.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.PLURAL).person(Person.SECOND).build()).isEqualTo("gaudetis");
+        assertThat(gaudere.getVerbStringBuilder().modus(Modus.INDICATIVE).numerus(Numerus.PLURAL).person(Person.THIRD).build()).isEqualTo("gaudent");
+        assertThat(gaudere.getVerbStringBuilder().indicative().singular().first().build()).isEqualTo("gaudeo");
+        assertThat(gaudere.getVerbStringBuilder().indicative().singular().second().build()).isEqualTo("gaudes");
+        assertThat(gaudere.getVerbStringBuilder().indicative().singular().third().build()).isEqualTo("gaudet");
+        assertThat(gaudere.getVerbStringBuilder().indicative().plural().first().build()).isEqualTo("gaudemus");
+        assertThat(gaudere.getVerbStringBuilder().indicative().plural().second().build()).isEqualTo("gaudetis");
+        assertThat(gaudere.getVerbStringBuilder().indicative().plural().third().build()).isEqualTo("gaudent");
+        
+    }
+    @Test
+    public void TestThirdConjugation(){
+        Verb tegere = new ThirdConjugation("teg", "ere", "o");
+        assertThat(tegere.getVerbStringBuilder().build()).isEqualTo("tegere");
+        assertThat(tegere.getVerbStringBuilder().indicative().singular().first().build()).isEqualTo("tego");
+        assertThat(tegere.getVerbStringBuilder().indicative().singular().second().build()).isEqualTo("tegis");
+        assertThat(tegere.getVerbStringBuilder().indicative().singular().third().build()).isEqualTo("tegit");
+        assertThat(tegere.getVerbStringBuilder().indicative().plural().first().build()).isEqualTo("tegimus");
+        assertThat(tegere.getVerbStringBuilder().indicative().plural().second().build()).isEqualTo("tegitis");
+        assertThat(tegere.getVerbStringBuilder().indicative().plural().third().build()).isEqualTo("tegunt");
+        
+        Verb capere = new ThirdConjugation("cap", "ere", "io");
+        assertThat(capere.getVerbStringBuilder().build()).isEqualTo("capere");
+        assertThat(capere.getVerbStringBuilder().indicative().singular().first().build()).isEqualTo("capio");
+        assertThat(capere.getVerbStringBuilder().indicative().singular().second().build()).isEqualTo("capis");
+        assertThat(capere.getVerbStringBuilder().indicative().singular().third().build()).isEqualTo("capit");
+        assertThat(capere.getVerbStringBuilder().indicative().plural().first().build()).isEqualTo("capimus");
+        assertThat(capere.getVerbStringBuilder().indicative().plural().second().build()).isEqualTo("capitis");
+        assertThat(capere.getVerbStringBuilder().indicative().plural().third().build()).isEqualTo("capiunt");
+        
+        
+    }
+    @Test
+    public void TestForthConjugation(){
+        Verb audire = new ForthConjugation("aud");
+        assertThat(audire.getVerbStringBuilder().build()).isEqualTo("audire");
+        assertThat(audire.getVerbStringBuilder().indicative().singular().first().build()).isEqualTo("audio");
+        assertThat(audire.getVerbStringBuilder().indicative().singular().second().build()).isEqualTo("audis");
+        assertThat(audire.getVerbStringBuilder().indicative().singular().third().build()).isEqualTo("audit");
+        assertThat(audire.getVerbStringBuilder().indicative().plural().first().build()).isEqualTo("audimus");
+        assertThat(audire.getVerbStringBuilder().indicative().plural().second().build()).isEqualTo("auditis");
+        assertThat(audire.getVerbStringBuilder().indicative().plural().third().build()).isEqualTo("audiunt");
+    }
+    
     
 }
