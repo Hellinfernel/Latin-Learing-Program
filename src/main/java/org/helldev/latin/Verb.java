@@ -1,17 +1,22 @@
 package org.helldev.latin;
 
+import org.helldev.latin.playground.api.Categoriae;
+
 import java.util.Map;
 
 public class Verb{
     String stem;
     Map<VerbProperties,String> suffixes;
     String infinitiveSuffix;
+    PerfectForm perfectForm; //TODO: I am not exactly happy with how I implemented perfectForms, may consider refactoring.
     
     
-    public Verb(String stem, Map<VerbProperties,String> suffixes, String infinitiveSuffix){
+    public Verb(String stem, Map<VerbProperties,String> suffixes, String infinitiveSuffix, PerfectForm perfectForm){
         this.stem = stem;
         this.suffixes = suffixes;
+        suffixes.putAll(perfectForm.getSuffixes());
         this.infinitiveSuffix = infinitiveSuffix;
+        this.perfectForm = perfectForm;
     }
     public VerbStringBuilder getVerbStringBuilder(){
         return new VerbStringBuilder();
@@ -21,6 +26,7 @@ public class Verb{
         Person person = Person.FIRST;
         Modus modus = null;
         boolean infinitive = true;
+        Tempus tempus = Tempus.PRESENT; //TODO: Should a StringBuilder have default States?
         public VerbStringBuilder(){}
         public VerbStringBuilder numerus(Numerus numerus){
             this.numerus = numerus;
@@ -74,15 +80,34 @@ public class Verb{
 //            infinitive = bool;
 //            return this;
 //        }
+        public VerbStringBuilder tempus (Tempus tempus){
+            this.tempus = tempus;
+            return this;
+        }
+        public VerbStringBuilder present(){
+            tempus = Tempus.PRESENT;
+            return this;
+        }
+        public VerbStringBuilder perfect(){
+            tempus = Tempus.PERFECT;
+            return this;
+        }
         public String build() {
             StringBuilder stringBuilder = new StringBuilder();
             if (infinitive == true) {
-                stringBuilder.append(stem)
-                        .append(infinitiveSuffix);
+                switch (tempus){
+                    case PERFECT -> stringBuilder.append(perfectForm.getStem()).append(perfectForm.getInfiniteSuffix());
+                    case PRESENT -> stringBuilder.append(stem).append(infinitiveSuffix);
+                    
+                }
+
                 return stringBuilder.toString();
             } else {
-                stringBuilder.append(stem)
-                        .append(suffixes.getOrDefault(new VerbProperties(person, numerus), null));
+                switch (tempus){
+                    case PERFECT -> stringBuilder.append(perfectForm.getStem());
+                    case PRESENT -> stringBuilder.append(stem);
+                }
+                stringBuilder.append(suffixes.getOrDefault(new VerbProperties(person, numerus, tempus), null));
                 return stringBuilder.toString();
             }
         }
