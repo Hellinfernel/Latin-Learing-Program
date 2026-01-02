@@ -2,6 +2,9 @@ package org.helldev.latin;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -283,5 +286,24 @@ public class BasicTests {
         
     }
     
+    @Test
+    public void AnalyseSentence(){
+//        String sentence = "Servus cubiculum intrat";
+//        HelperClass2PleaseRename thing = new HelperClass2PleaseRename(sentence);
+//        assertThat(thing.getPredicate()).isEqualTo("intrat");
+//        assertThat(thing.getSubject()).isEqualTo("Servus");
+//        assertThat(thing.getAccusativeObject()).isEqualTo("cubiculum");
+    }
+    
+    @Test
+    public void DysectSentence(){
+        String sentence = "Servus cubiculum intrat";
+        Collection<String> target = new ArrayList<String>();
+        target.add("Servus");
+        target.add("cubiculum");
+        target.add("intrat");
+        Collection<String> collection = HelperClass2PleaseRename.disectSentence(sentence);
+        assertThat(collection).containsAll(target);
+    }
     
 }
