@@ -2,9 +2,11 @@ package org.helldev.latin;
 
 import org.helldev.latin.playground.api.Categoriae;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-public class Verb{
+public class Verb extends Word{
     String stem;
     Map<VerbProperties,String> suffixes;
     String infinitiveSuffix;
@@ -21,6 +23,28 @@ public class Verb{
     public VerbStringBuilder getVerbStringBuilder(){
         return new VerbStringBuilder();
     }
+
+    @Override
+    public List<String> getAllForms() {
+        List<String> list = new ArrayList<>();
+        list.add(new StringBuilder().append(stem).append(infinitiveSuffix).toString());
+        list.add(new StringBuilder().append(perfectForm.getStem()).append(perfectForm.getInfiniteSuffix()).toString());
+        list.addAll(suffixes.values()
+                .stream()
+                .map(suffix -> new StringBuilder()
+                        .append(stem)
+                        .append(suffix)
+                        .toString()));
+        list.addAll(perfectForm.getSuffixes()
+                .values()
+                .stream()
+                .map(suffix -> new StringBuilder()
+                        .append(perfectForm.getStem())
+                        .append(suffix)
+                        .toString()));
+        return list;
+    }
+
     public class VerbStringBuilder {
         Numerus numerus = Numerus.SINGULAR;
         Person person = Person.FIRST;

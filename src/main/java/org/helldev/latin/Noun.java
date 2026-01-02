@@ -1,8 +1,11 @@
 package org.helldev.latin;
 
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-public class Noun {
+public class Noun extends Word{
 
     String stem; // This is the part of the word which mostly doesnt change, usually it gets extendend by an Suffix depending on the context.
     Genus genus; //Nouns have grammatical Genders which have certain effects on Declinations.
@@ -22,6 +25,19 @@ public class Noun {
         // int casusNumber = Casus.values().findEquivalent(casus).returnSpot()
         // stringBuilder.append(suffixes[numerusNumber][genusNumber]
         return stringBuilder.toString();
+    }
+
+    @Override
+    public List<String> getAllForms() {
+        List<String> list = new ArrayList<>();
+        list.addAll(suffixes
+                .values()
+                .stream()
+                .map(suffix -> new StringBuilder()
+                        .append(stem)
+                        .append(suffix)
+                        .toString()));
+        return list;
     }
 
    /* public String getNominativeSingular() {
